@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{utilisateur.nom}}{% endblock %}
+
+{% block body %}
+
+<h1>{{utilisateur.nom}}</h1>
+<a>{{utilisateur.prenom}}</p>
+<a>{{utilisateur.email}}</p>
+
+<h2>Modifier l'utilisateur</h2>
+
+{{form (form_edit)}}
+
+{% if taches is not empty %}
+
+<h2>Liste des taches</h2>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>Tache</th>
+            <th>Deadline</th>
+            <th>Etat</th>
+        </tr>
+    </thread>
+    <tbody>
+    
+        {% for tache in taches %}
+        <tr>
+       
+            <td>
+            <a href="{{ path('edit_tache',{'id':tache.id}) }}">{{tache.nom}}</a>
+            </td>
+            
+            <th>{{tache.deadline|date('Y-m-d H:i:s') }}</th>
+
+            {% if tache.etat == 1 %}
+            <th>Fini</th>
+            {% else %}
+            <th>Non fini</th>
+            {% endif %}
+
+            <td>
+            
+            </td>
+
+            <td>
+                <a href="{{path('delete_tache', {'id' : tache.id})}}">
+                Supprimer
+                </a>
+            </td>
+        
+        </tr>
+{% endfor %}
+
+{% else %}
+
+<h2> {{utilisateur.nom}} {{utilisateur.prenom}} ne possede pas de taches </h2>
+
+{% endif %}
+
+{% endblock %}

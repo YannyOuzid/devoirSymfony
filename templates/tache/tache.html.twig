@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{tache.nom}}{% endblock %}
+
+{% block body %}
+<h1>{{tache.nom}}</h1>
+<a>{{tache.deadline|date('Y-m-d') }}</p>
+{% if tache.etat == 1 %}
+            <th>Fini</th>
+            {% else %}
+            <th>Non fini</th>
+            {% endif %}
+<p>{{tache.utilisateur}}</p>
+
+
+<h2>Modifier les details de la tache</h2>
+
+{{form (form_edit)}}
+{{form (form_valid)}}
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Taches{% endblock %}
+
+{% block body %}
+<h1>Liste des Taches</h1>
+
+{% if taches is not empty %}
+
+    <table class="table">
+    <thread>
+        <tr>
+            <th>Tache</th>
+            <th>Deadline</th>
+            <th>Etat</th>
+            <th>Utilisateur</th>
+            <th>Id de l'utilisateur</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for tache in taches %}
+        <tr>
+       
+            <td>
+            <a href="{{ path('edit_tache',{'id':tache.id}) }}">{{tache.nom}}</a>
+            </td>
+            
+            <th>{{tache.deadline|date('Y-m-d H:i:s') }}</th>
+
+            {% if tache.etat == 1 %}
+            <th>Fini</th>
+            {% else %}
+            <th>Non fini</th>
+            {% endif %}
+
+
+            <th>{{tache.utilisateur}}</th>
+
+            <th>{{tache.utilisateur.id}}</th>
+        
+        </tr>
+    {% endfor %}
+
+{% else %}
+
+    <p>Il n'y a aucune tache</p>
+
+{% endif %}
+
+
+    {{ form (form_ajout)}}
+{% endblock %}
