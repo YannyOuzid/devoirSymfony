@@ -17,7 +17,7 @@ class ValidtacheType extends AbstractType
         ->add('etat' , HiddenType::class, [
             'empty_data' => 1,
         ])
-        ->add('valider', SubmitType::class )
+        ->add('valide', SubmitType::class )
     ;
         ;
     }
