@@ -3,14 +3,14 @@
 {% block title %}{{tache.nom}}{% endblock %}
 
 {% block body %}
-<h1>{{tache.nom}}</h1>
-<a>{{tache.deadline|date('Y-m-d') }}</p>
+<h1>Tache :{{tache.nom}}</h1>
+<a>Deadline : {{tache.deadline|date('Y-m-d') }}</p>
 {% if tache.etat == 1 %}
-            <th>Fini</th>
+            <th>Etat : Fini</th>
             {% else %}
-            <th>Non fini</th>
+            <thE>Etat : Non fini</th>
             {% endif %}
-<p>{{tache.utilisateur}}</p>
+<p> Utilisateur : {{tache.utilisateur}}</p>
 
 
 <h2>Modifier les details de la tache</h2>
